@@ -7,3 +7,5 @@ class CustomModelManager(models.Manager):
             return self.get(**kwargs)
         except self.model.DoesNotExist:
             return None
+        except:
+            return None
