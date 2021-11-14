@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+Search
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+
+{% block content %}
+    <div class="flex flex-col justify-items-center items-center mt-20 left-auto w-full ml-1/3 mr-1/3">
+        <h2 class="mt-16 font-bold text-xl"></h2>
+        <form method="get" class="flex justify-center items-center" action="{% url "rooms:search" %}">
+        {{form.as_p}}
+            <button class="btn-link w-28 h-20 ml-8">Search</button>
+        </form>
+        <div class="border-section text-center w-2/3">
+        <h3 class="font-bold text-3xl mt-12 text-left pl-4">Results</h3>
+        </div>
+        <div class="border-section mb-5 w-2/3 flex flex-wrap mx-32 ">
+        {% for room in rooms  %}
+        {% include 'mixins/room_card.html' with room=room %}
+        <!-- <div class="">{{room.name}}</div> -->
+        <br>
+        {% endfor %}
+        </div>
+    
+
+    <!-- {% comment %} Pagenator {% endcomment %}
+    {% load my_tags %}
+    {% if rooms.has_previous %}
+        <a href="?{% param_replace page=1 %}">First</a>
+        {% if rooms.previous_page_number != 1 %}
+        <a href="?{% param_replace page=rooms.previous_page_number %}">Previous</a>
+        {% endif %}
+    {% endif %}
+
+    Page {{ rooms.number }} of {{ rooms.paginator.num_pages }}
+
+    {% if rooms.has_next %}
+        {% if rooms.next_page_number != rooms.paginator.num_pages %}
+        <a href="?{% param_replace page=rooms.next_page_number %}">Next</a>
+        {% endif %}
+        <a href="?{% param_replace page=rooms.paginator.num_pages %}">Last</a>
+    {% endif %}
+
+    <p class="mb-4 text-xl">Objects {{ rooms.start_index }}—{{ rooms.end_index }}</p>
+    </div>
+    <hr> -->
+    <div class="flex items-center justify-center mx-auto container">
+    {% if rooms.has_previous %}
+        <a href="?page={{rooms.previous_page_number}}" class="text-green-500">
+            <i class="fas fa-arrow-left fa-lg"></i>
+        </a>
+    {% else %}
+        <i class="fas fa-arrow-left fa-lg"></i>
+    {% endif %}
+
+    <span class="mx-3 font-medium text-lg">
+        Page {{ rooms.number }} of {{ rooms.paginator.num_pages }}
+    </span>
+
+    {% if rooms.has_next %}
+        <a href="?page={{rooms.next_page_number}}" class="text-green-500">
+            <i class="fas fa-arrow-right fa-lg"></i>
+        </a>
+    {% else %}
+        <i class="fas fa-arrow-right fa-lg"></i>
+    {% endif %}
+    </div>
+    <div class="flex items-center justify-center mx-auto mt-5 mb-5  container">
+    {% for page in rooms.paginator.page_range %}
+        {% if page == rooms.number %}
+            <a href="?page={{page}}" class="mr-2 text-red-400">{{page}}</a>
+        {% else %}
+            <a href="?page={{page}}" class="mr-2">{{page}}</a>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock content %}
+

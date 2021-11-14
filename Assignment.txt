@@ -1,0 +1,107 @@
+Assignment2 : User 모델과 admin 구축.
+1. 목표 & 수행
+    1) 모델: Bio, Preference, Language, Favourite Book Genre, Favourite Movie Genre 구축
+    2) admin: model을 register하고, list_display, list_filter, fieldsets 설정
+2. Link
+    1) Our link : https://repl.it/@guswn2521/2ndAssignmentBoilerplate-2#users/admin.py
+    2) Answer : https://repl.it/@guswn2521/DelightfulEvilCamel-1#users/models.py
+
+Assignment 3 : 
+
+Assignment 7 : 
+1. 목표
+    1) Commands로 Seeder 사용하여 Fake db 생성
+
+Answer : https://repl.it/@guswn2521/SecretTightLevel-4#.replit    
+
+* fav commands에서 onetoone field seed 적용방법
+
+fav_list.movies.set(choices(movies))
+fav_list.books.set(choices(books))
+
+Assignment 9
+Detail View, Create View, Update View 생성하기
+
+Assignment 10
+log in, log out, sign Update
+
+Assignment 11
+Based on the videos from #21.3 to #21.7:
+
+1. Make a user profile page
+2. Make an update profile page.
+3. Make a change password page.
+--> user 프로필 페이지 만들고, 업데이트가능하게 그리고 비밀번호 수정 가능하게 하기.
+
+Assignment 12
+Based on the videos #20.1 and #20.12 add mixins to your templates, we are doing this today so we can add the styles tomorrow.
+
+These are the mixins you have to make:
+- Book
+- Movie
+- Person
+- Form (to use in ALL the forms)
+
+These are the partials you have to make:
+- Header
+- Footer
+
+As a second task:
+- Create a /search view that shows all the categories and has a search bar.
+- The search doesn't have to work, just make the URL and the GET view.
+
+--> mixins 4개 만들기 // partials에서 헤더, 푸터 만들기 // /search 페이지에 서치만들기
+진행과정
+ 1) book, movie, person에 대해 list.html에서 각 항목의 카드를 볼 수 있도록 mixin폴더내에 _card.html 생성 및 include
+ 2) Header, Footer 분리하여 templates/partials 폴더에 저장
+ 3) core에서 /search 가능하게 forms.py, views.py 코드 작성 -> urls.py 등록 -> HTML 작성 (form.as_p 사용)
+ 
+
+ Assignment 13
+Today is time to make everything beautiful!
+Using Tailwind CSS make your website look as good as you can!
+Tailwind is on the blueprint so you can start adding class names immediatly.
+Don't create any .css file, use only Tailwind class names
+Because we are not using Gulp, we can't use @apply** **
+--> tailwind css를 이용해서 전반적으로 꾸미기
+
+ Assignment 14
+The design of today's blueprint is from miranaky! Great work! Congrats!
+This lesson is not based on any videos, time to practice!
+Using the provided blueprint complete the following tasks:
+
+1) Using Tailwind, finish the pages:
+User Profile
+Movie Detail
+Book Detail
+Person Detail
+
+2) Make a new Category Detail page that shows the movies and books that a category has, the URL should be /category/<int:pk>, use Tailwind as well.
+
+3) Complete the /search view and search for a movie, book or person when the user submits the search bar.
+--> 1) Tailwind css를 이용해서 User Profile, Movie Detail, Book Detail, Person Detail
+    2) 
+    3)
+
+Assignment15
+The design of today's blueprint is from miranaky! Great work! Congrats! Using the provided blueprint complete the following tasks:
+
+Make a new URL /favs/add/<int:pk> and a function based view.
+This URL should add a movie or a book to the user's favourite list, for example /favs/add/1?type=book or /favs/add/2?type=movie
+The user should be logged in to perform this action.
+If the user has no fav list the view should create one.
+On the movie and book template mixin make a button to add them to the user's fav list.
+Make a template tag to show if a book or movie is already on the fav list.
+--> 
+1) user가 로그인했을 때, 찜목록 만들 수 있게하기 (찜목록: fav_list)
+2) 찜목록 추가하면, Add Favorite 버튼이 Remove Favorite으로 바뀌게 하기
+3) book or movie에 적용하기
+
+Last Assignment
+As a final project we will build the reviews feature!
+
+Allow users to leave reviews on books and movies (You will have to create a url, view and form).
+Allow users to delete their reviews. When you are done, deploy your project to Elastic Beanstalk using the videos from the section #26 and submit the link.
+--> 
+1) book과 movie에 대해 리뷰 남기고 삭제가능한 기능 만들기
+2) Elastic Beanstalk에 deploy 하기

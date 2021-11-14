@@ -1,0 +1,26 @@
+{% load i18n %}
+<footer class="container mx-auto text-center py-12 border-t font-medium text-gray-500 grid grid-cols-3 h-8 mb-8">
+    
+    <div class="flex justify-center">
+        {% get_current_language as LANGUAGE_CODE %}
+        <select class="w-40 h-12 p-0 pl-4" id="js-lang">
+            <option value="en" 
+                {% if LANGUAGE_CODE == 'en' %}
+                    selected                
+                {% endif %}
+            >English</option>
+
+            <option value="ko" 
+                {% if LANGUAGE_CODE == 'ko' %}
+                    selected
+                {% endif %}
+            >Korean</option>
+        </select>
+    </div>
+    <div class="flex flex-col">
+        <span>
+            {%trans "Have a nice day." %}
+        </span>
+        <span>&copy; 2021 Airbnb, Inc. {% trans 'All rights reserved' %}.</span>
+    </div>
+</footer>
